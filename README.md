@@ -10,5 +10,5 @@
 
 ### BFS
 
-- [불](https://github.com/Im-D/Algorithm/tree/20190922)
+- [불](https://github.com/Im-D/Algorithm/tree/master/BFS/%5BBJ%5D%EC%82%BC%EC%84%B1%20SW%20a%ED%98%95%20%EB%8C%80%EB%B9%84-%20%EB%B6%88)
 - [단지번호붙이기](https://github.com/Im-D/Algorithm/tree/20191005)

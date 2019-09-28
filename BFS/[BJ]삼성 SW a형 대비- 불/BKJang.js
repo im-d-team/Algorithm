@@ -31,63 +31,47 @@ require('readline')
         const testCaseLine = input.shift();
         inputArr[j] = testCaseLine.split('');
       }
-      const answer = dfs({ inputArr, w, h });
+      const answer = bfs({ inputArr, w, h });
       console.log(answer);
     }
   });
 
-const dfs = ({ inputArr, w, h }) => {
+const bfs = ({ inputArr, w, h }) => {
   const queue = new Queue();
 
   // 3. inputArr를 각 값에 따라 바꿔준다.
-  let changedArr = handleChangeInputArr({ inputArr, w, h, queue });
+  handleChangeInputArr({ inputArr, w, h, queue });
   // 4. 큐가 비워질 때까지 반복한다.
-  let isFire = false;
-  let isPossible = false;
   let result = 0;
 
   while (queue.arr.length > 0) {
     const item = queue.deQueue();
-    if (item.fire) {
-      isFire = true;
-    } else {
-
-      if (isFire && !item.fire)
-        result++;
-      isFire = false;
-    }
-
-    const { movedArr, possible } = handleMoveFireAndPerson({ changedArr, item, queue });
-    changedArr = movedArr;
+    const possible = handleMoveFireAndPerson({ inputArr, item, queue });
 
     if (possible) {
-      isPossible = true;
+      return inputArr[item.x][item.y];
     }
   }
-
-  if (isPossible) return result;
 
   return 'IMPOSSIBLE'
 }
 
 const handleChangeInputArr = ({ inputArr, w, h, queue }) => {
-  const arr = [...inputArr];
-
   for (let i = 0; i < h; i++) {
     for (let j = 0; j < w; j++) {
-      switch (arr[i][j]) {
+      switch (inputArr[i][j]) {
         case '.':
-          arr[i][j] = 0;
+          inputArr[i][j] = 0;
           break;
         case '#':
-          arr[i][j] = 2;
+          inputArr[i][j] = 2;
           break;
         case '*':
-          arr[i][j] = -1;
+          inputArr[i][j] = 1;
           queue.enQueue({ x: i, y: j, fire: true })
           break;
         case '@':
-          arr[i][j] = 0;
+          inputArr[i][j] = 1;
           queue.enQueue({ x: i, y: j });
           break;
         default:
@@ -95,33 +79,31 @@ const handleChangeInputArr = ({ inputArr, w, h, queue }) => {
       }
     }
   }
-
-  return arr;
 }
 
-const handleMoveFireAndPerson = ({ changedArr, item, queue }) => {
-  const movedArr = [...changedArr];
+const handleMoveFireAndPerson = ({ inputArr, item, queue }) => {
   const degrees = [{ x: 0, y: 1 }, { x: 0, y: -1 }, { x: 1, y: 0 }, { x: -1, y: 0 }];
   let possible = false;
 
-  if ((item.x === 0 || item.y === 0 || item.x === movedArr.length - 1 || item.y === movedArr[0].length - 1) && !item.fire) {
+  if ((item.x === 0 || item.y === 0 || item.x === inputArr.length - 1 || item.y === inputArr[0].length - 1) && !item.fire) {
     possible = true;
   }
 
   degrees.forEach(degree => {
-    const locationArr = movedArr[item.x + degree.x];
+    const locationArr = inputArr[item.x + degree.x];
     const location = locationArr && locationArr[item.y + degree.y]
 
     if (location === 0) {
       if (item.fire) {
-        movedArr[item.x + degree.x][item.y + degree.y] = -1;
         queue.enQueue({ x: item.x + degree.x, y: item.y + degree.y, fire: true });
+        inputArr[item.x + degree.x][item.y + degree.y] = 1;
       } else {
-        movedArr[item.x + degree.x][item.y + degree.y] = 0;
         queue.enQueue({ x: item.x + degree.x, y: item.y + degree.y });
+        inputArr[item.x + degree.x][item.y + degree.y] = inputArr[item.x][item.y] + 1;
       }
+
     }
   });
   
-  return { movedArr, possible };
+  return possible;
 }

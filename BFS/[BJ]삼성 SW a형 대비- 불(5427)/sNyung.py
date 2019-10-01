@@ -1,12 +1,3 @@
-# 불
-
-## 접근방법
-
-> queue를 쓰지 말고 deque를 쓰자!!
-
-## 코드
-
-```py
 from sys import stdin
 from collections import deque
 
@@ -47,4 +38,3 @@ for _ in range(int(input())):
 
   Q.append(p)
   print(bfs(y, x, Q, board))
-```

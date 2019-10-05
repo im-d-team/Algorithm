@@ -29,19 +29,6 @@ public class DaeHwa {
 		}
 	}
 
-	public static int[][] initMap(String str, int n) {
-
-		int[][] map = new int[n][];
-		String[] slicedStr = str.split("\n");
-
-		for (int i = 0; i < n; i++) {
-			map[i] = Arrays.stream(slicedStr[i].replaceAll("\\s", "").split("")).mapToInt(x -> Integer.parseInt(x))
-					.toArray();
-		}
-
-		return map;
-	}
-
 	public static ArrayList<Integer> bfs(int[][] map, Vertex index) {
 		Queue<Vertex> queue = new LinkedList<Vertex>();
 		Vertex current = null;

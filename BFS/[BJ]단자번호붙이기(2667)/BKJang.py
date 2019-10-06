@@ -1,5 +1,4 @@
 from sys import stdin
-from collections import deque
 
 # 1. 큐 정의
 class Queue:

@@ -8,7 +8,7 @@ import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Queue;
 
-public class DaeHwa {
+public class Main {
 	public static void main(String[] args) throws NumberFormatException, IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		int n = Integer.parseInt(br.readLine());
@@ -34,42 +34,25 @@ public class DaeHwa {
 		Vertex current = null;
 		ArrayList<Integer> list = new ArrayList<Integer>();
 		for (int i = 0; i < map.length; i++) {
-			current = findCur(map, index);
-			if (current != null && current.y != map.length) {
-				map[index.y][index.x] = 2;
-			}
-			if (current.y == map.length) {
-				return list;
-			}
-			int cnt = 0;
-			queue.offer(current);
+			for (int j = 0; j < map.length; j++) {
+				if (map[j][i] == 1) {
+					int cnt = 0;
+					map[j][i] = 2;
+					current = new Vertex(j, i);
 
-			while (queue.size() != 0) {
-				if ((current = queue.poll()) != null) {
-					cnt++;
+					queue.offer(current);
+					while (queue.size() != 0) {
+						if ((current = queue.poll()) != null) {
+							cnt++;
+						}
+						findAdjcent(map, current, queue);
+					}
+					list.add(cnt);
 				}
-				findAdjcent(map, current, queue);
 			}
-			list.add(cnt);
 		}
 		return list;
 
-	}
-
-	public static Vertex findCur(int[][] map, Vertex index) {
-		if (index.x >= map.length) {
-			index.x = 0;
-			index.y++;
-		}
-		if (index.y >= map.length) {
-			index = null;
-			return index;
-		}
-		if (map[index.y][index.x] != 1) {
-			index.x++;
-			findCur(map, index);
-		}
-		return index;
 	}
 
 	public static void findAdjcent(int[][] map, Vertex index, Queue<Vertex> queue) {

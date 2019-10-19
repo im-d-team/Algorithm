@@ -9,9 +9,9 @@ n, m, v = map(int, input().split(' '))
 matrix = [[0] * (n + 1) for _ in range(n + 1)]
 # 1-2. 행렬의 이어진 부분들을 1로 바꿔준다.
 for _ in range(m):
-    link = list(map(int, input().split()))
-    matrix[link[0]][link[1]] = 1
-    matrix[link[1]][link[0]] = 1
+    edge = list(map(int, input().split()))
+    matrix[edge[0]][edge[1]] = 1
+    matrix[edge[1]][edge[0]] = 1
 
 # 2. dfs 함수
 def dfs(current, matrix, visited):

@@ -7,7 +7,7 @@
 ### 주제별 분류
 
 - [Queue](#Queue)
-- [BFS, DFS](#BFS,-DFS)
+- [BFS, DFS](#bfs-dfs)
 
 ### Queue
 

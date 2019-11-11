@@ -13,6 +13,10 @@
 
 - [프린터 큐](https://github.com/Im-D/Algorithm/tree/master/Queue/%5BBJ%5D%ED%94%84%EB%A6%B0%ED%84%B0%20%ED%81%90(1966))
 
+### Dynamic Programming(DP)
+
+- [계단오르기](https://github.com/Im-D/Algorithm/tree/master/DP/%5BBJ%5D%EA%B3%84%EB%8B%A8%20%EC%98%A4%EB%A5%B4%EA%B8%B0(2579))
+
 ### BFS, DFS
 
 - [불](https://github.com/Im-D/Algorithm/tree/master/BFS%2C%20DFS/%5BBJ%5D%EC%82%BC%EC%84%B1%20SW%20a%ED%98%95%20%EB%8C%80%EB%B9%84-%20%EB%B6%88(5427))

@@ -4,7 +4,7 @@
 
 <br/>
 
-## 문제 주제별 분류 살펴보기[Go to Issues](https://github.com/Im-D/Algorithm/issues)
+## 문제 주제별 분류 살펴보기 ([Go to Issues](https://github.com/Im-D/Algorithm/issues))
 
 <br/>
 

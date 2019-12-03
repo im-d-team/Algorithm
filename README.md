@@ -17,3 +17,4 @@
 - [계단 오르기](https://github.com/Im-D/Algorithm/tree/master/%5BBJ%5D%EA%B3%84%EB%8B%A8%20%EC%98%A4%EB%A5%B4%EA%B8%B0(2579))
 - [균형잡힌 세상](https://github.com/Im-D/Algorithm/tree/master/%5BBJ%5D%EA%B7%A0%ED%98%95%EC%9E%A1%ED%9E%8C%EC%84%B8%EC%83%81(4949))
 - [외판원 순회](https://github.com/Im-D/Algorithm/tree/master/%5BBJ%5D%EC%99%B8%ED%8C%90%EC%9B%90%20%EC%88%9C%ED%9A%8C(2098))
+- [숫자 야구](https://github.com/Im-D/Algorithm/tree/master/%5BBJ%5D%EC%88%AB%EC%9E%90%20%EC%95%BC%EA%B5%AC(2503))

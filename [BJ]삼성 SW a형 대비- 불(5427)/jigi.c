@@ -175,18 +175,15 @@ static inline int dead_end(unsigned short x, unsigned short y)
 static int escape_room(void)
 {
 	static const struct coord coord_delta[4] = {
-		{ .x =  0, .y = -1 }, // top
-		{ .x =  0, .y =  1 }, // bottom
-		{ .x = -1, .y =  0 }, // left
-		{ .x =  1, .y =  0 }, // right
+		{ .y = -1, .x =  0 }, /* top    */
+		{ .y =  1, .x =  0 }, /* bottom */
+		{ .y =  0, .x = -1 }, /* left   */
+		{ .y =  0, .x =  1 }, /* right  */
 	};
 
 	struct list_head *next_flame, *next_player;
 	int step = 1, ret = 0;
 
-	/*
-	 * Initialize the map of room, position of flames and the player.
-	 */
 	room_init();
 
 	do {
@@ -195,11 +192,6 @@ static int escape_room(void)
 
 		next_flame = list_head_init();
 
-		/*
-		 * Get next possible positions of flame. The flame can spread
-		 * top, bottom, left and right iff there are no other flames or
-		 * walls. Also iff it still is in the map, for sure.
-		 */
 		list_for_each_entry(coord, room.flame, list) {
 			for (d = 0; d < 4; d++) {
 				x = coord->x + coord_delta[d].x;
@@ -215,11 +207,6 @@ static int escape_room(void)
 		coord_list_free(room.flame);
 		room.flame = next_flame;
 
-		/*
-		 * Get next possible positions of player. The player can move to
-		 * top, bottom, left and right iff there are no flames or walls
-		 * on the space.
-		 */
 		next_player = list_head_init();
 
 		list_for_each_entry(coord, room.player, list) {
@@ -227,10 +214,6 @@ static int escape_room(void)
 				x = coord->x + coord_delta[d].x;
 				y = coord->y + coord_delta[d].y;
 
-				/*
-				 * When the player reached to the outside of
-				 * map, it means the player succeeded to exit.
-				 */
 				if (!in_room(x, y)) {
 					coord_list_free(next_player);
 					ret = step;
@@ -248,11 +231,6 @@ static int escape_room(void)
 		room.player = next_player;
 
 		++step;
-
-		/*
-		 * The loop of getting next positions of flame and the player,
-		 * is continued until there are no ways for player to go.
-		 */
 	} while(!list_empty(room.player));
 
 out:

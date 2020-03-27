@@ -140,11 +140,6 @@ static void visit_next_vertex(struct vertex *vertex, unsigned int method)
 	struct vertex *iter;
 
 	if (method == DEPTH_FIRST)
-		/*
-		 * While the sparse matrix for the graph representation is
-		 * sorted in ascending order, we need to stack those in
-		 * descending order. So travel the sparse matrix reversed.
-		 */
 		list_for_each_entry_reverse(iter, &edge_of[vertex->id], list) {
 			if (!visit[iter->id]) {
 				vertex_list_add(&path, iter->id, false);
@@ -164,17 +159,8 @@ int main(void)
 	struct vertex *vertex;
 	unsigned int method;
 
-	/*
-	 * Initialize the graph of given vertices and edges. The graph will be
-	 * represented as a form of sparse matrix.
-	 */
 	graph_init();
 
-	/*
-	 * Travel the graph with the method of DFS and BFS, respectively. The
-	 * first iteration of the loop will be done with DFS, and the second
-	 * one will be done with BFS.
-	 */
 	for (method = 0; method < NR_METHODS; method++) {
 		memset(visit, 0, sizeof(bool) * nr_vertex);
 		vertex_list_add(&path, start-1, false);
@@ -198,9 +184,5 @@ int main(void)
 		printf("\n");
 	}
 
-	/*
-	 * We have some allocated memories to be freed left, but hey, this is
-	 * the end of this program. Skip freeing those allocated memory.
-	 */
 	return 0;
 }

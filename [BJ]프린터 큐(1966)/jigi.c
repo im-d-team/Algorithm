@@ -25,26 +25,14 @@ void print_documents(void)
 		scanf("%hhu", &print_queue[i]);
 	}
 
-	/*
-	 * Create `sorted_queue` copied from `print_queue`. `sorted_queue` has
-	 * an identical set of itmes in `print_queue`, but in descending order.
-	 */
 	memcpy(sorted_queue, print_queue, sizeof(unsigned char) * nr_doc);
 	qsort(sorted_queue, nr_doc, sizeof(unsigned char), compare);
 
 	for (head = 0; order < nr_doc; head = (head+1) % nr_doc) {
-		/*
-		 * If the head is pointing the document with highest priority,
-		 * remove the document (set as 0) and count up the print order.
-		 */
 		if (sorted_queue[order] == print_queue[head]) {
 			print_queue[head] = 0;
 			++order;
 
-			/*
-			 * We just printed the target nth document. Get out from
-			 * the loop, since we don't care the last.
-			 */
 			if (head == nth)
 				break;
 		}

@@ -116,10 +116,10 @@ static inline int in_map(unsigned short x, unsigned short y)
 static unsigned int explore_apt(int x, int y)
 {
 	static const struct coord iter_delta[4] = {
-		{ .y = -1, .x =  0 }, // top
-		{ .y =  1, .x =  0 }, // bottom
-		{ .y =  0, .x = -1 }, // left
-		{ .y =  0, .x =  1 }, // right
+		{ .y = -1, .x =  0 }, /* top    */
+		{ .y =  1, .x =  0 }, /* bottom */
+		{ .y =  0, .x = -1 }, /* left   */
+		{ .y =  0, .x =  1 }, /* right  */
 	};
 
 	struct list_head houses = list_head_init(houses);
@@ -129,10 +129,6 @@ static unsigned int explore_apt(int x, int y)
 	coord_list_add(&houses, x, y);
 	--map[y][x];
 
-	/*
-	 * Get houses in same apartment. One apartment is a set of the houses
-	 * gathered top, bottom, left and right.
-	 */
 	while (!list_empty(&houses)) {
 		house = list_first_entry(&houses, struct coord, list);
 		++num;
@@ -169,10 +165,6 @@ int main(void)
 		scanf("%s\n", map[y]);
 	}
 
-	/*
-	 * Explore whole map. If there is a house on the space now looking at,
-	 * explore the apartment to which that house belongs.
-	 */
 	for (y = 0; y < size; y++) {
 		for (x = 0; x < size; x++) {
 			if (map[y][x] != '1')
@@ -183,11 +175,6 @@ int main(void)
 		}
 	}
 
-	/*
-	 * Print out the number of apartments and the number of houses for each.
-	 * Because the list of apartments is already sorted, all we need to do
-	 * is just to pop out an apartment, print the number of houses and free.
-	 */
 	printf("%d\n", nr_apts);
 
 	while (!list_empty(&apts)) {

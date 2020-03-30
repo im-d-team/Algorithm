@@ -18,3 +18,5 @@
 - [균형잡힌 세상](https://github.com/Im-D/Algorithm/tree/master/%5BBJ%5D%EA%B7%A0%ED%98%95%EC%9E%A1%ED%9E%8C%EC%84%B8%EC%83%81(4949))
 - [외판원 순회](https://github.com/Im-D/Algorithm/tree/master/%5BBJ%5D%EC%99%B8%ED%8C%90%EC%9B%90%20%EC%88%9C%ED%9A%8C(2098))
 - [숫자 야구](https://github.com/Im-D/Algorithm/tree/master/%5BBJ%5D%EC%88%AB%EC%9E%90%20%EC%95%BC%EA%B5%AC(2503))
+- [한 줄로 서기](https://github.com/im-d-team/Algorithm/tree/master/%5BBJ%5D%ED%95%9C%20%EC%A4%84%EB%A1%9C%20%EC%84%9C%EA%B8%B0(1138))
+- [탑](https://github.com/im-d-team/Algorithm/tree/master/%5BBJ%5D%ED%83%91(2493))

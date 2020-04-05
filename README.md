@@ -20,3 +20,4 @@
 - [숫자 야구](https://github.com/Im-D/Algorithm/tree/master/%5BBJ%5D%EC%88%AB%EC%9E%90%20%EC%95%BC%EA%B5%AC(2503))
 - [한 줄로 서기](https://github.com/im-d-team/Algorithm/tree/master/%5BBJ%5D%ED%95%9C%20%EC%A4%84%EB%A1%9C%20%EC%84%9C%EA%B8%B0(1138))
 - [탑](https://github.com/im-d-team/Algorithm/tree/master/%5BBJ%5D%ED%83%91(2493))
+- [좋은 단어](https://github.com/Im-D/Algorithm/tree/master/%5BBJ%5D%EC%A2%8B%EC%9D%80%20%EB%8B%A8%EC%96%B4(3986))

@@ -1,30 +1,23 @@
 #include <stdio.h>
 
-int is_nice(void)
-{
-	char buffer[50001] = {'\0'};
-	char letter, *head = buffer;
-
-	while ((letter = (char) getchar()) ^ '\n') {
-		if (letter ^ (*head)) {
-			*(++head) = letter;
-		} else {
-			--head;
-		}
-	}
-
-	return (head == buffer);
-}
-
 int main(void)
 {
 	unsigned int nr_str, nice = 0;
 
 	scanf("%u\n", &nr_str);
 
-	while (nr_str--) {
-		nice += is_nice();
-	}
+	do {
+		int latest, new = getchar();
+		unsigned int head = 0;
+
+		for (latest = !(new & 1); new != '\n'; latest = !latest) {
+			new &= 1;
+			head += ((new ^ latest) << 1) - 1;
+			new = getchar();
+		}
+
+		nice += !(head);
+	} while(--nr_str);
 
 	printf("%u\n", nice);
 

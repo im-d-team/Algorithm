@@ -1,45 +1,37 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int compare(const void *a, const void *b)
+static int compare(const void *a, const void *b)
 {
-	int va = *(int *) a, vb = *(int *) b;
-	return va > vb ? 1 : (va < vb ? -1 : 0);
+	return *(int *) a - *(int *) b;
 }
 
-static inline int cut_into(int *log, int mark, int chance, int *len, int *first)
+static inline int cut_into(int *log, int mark, int chance, int len)
 {
-	int longest = 0, chunk = 0, i;
+	int i;
 
-	for (i = mark-1; i >= 0; --i) {
-		chunk = log[mark] - log[i];
-
-		if (chunk > (*len)) {
-			if (mark == i+1) {
+	for (i = mark-1; i >= 0; i--) {
+		if (log[mark] - log[i] > len) {
+			if (mark == ++i) {
 				return 0;
 			}
 
-			chunk = log[mark] - log[++i];
-			longest = chunk > longest ? chunk : longest;
 			mark = i;
 			--chance;
 		}
 	}
 
-	*len = chunk > longest ? chunk : longest;
-	*first = chance > 0 ? 1 : mark;
-
-	return (chance >= 0);
+	return (chance < 0) ? 0 : (chance ? 1 : mark);
 }
 
 int main(void)
 {
 	int len, mark, chance, *log;
-	int longest, the_first, first, i;
+	int first, min = 0, i;
 
 	scanf("%d %d %d\n", &len, &mark, &chance);
 
-	log = malloc(sizeof(int) * ((++mark)+1));
+	log = malloc(sizeof(int) * ((++mark) + 1));
 	log[0] = 0;
 	log[mark] = len;
 
@@ -49,12 +41,19 @@ int main(void)
 
 	qsort(log+1, mark-1, sizeof(int), compare);
 
-	while (cut_into(log, mark, chance, &len, &first)) {
-		longest = len--;
-		the_first = first;
+	while (min <= len) {
+		int try = (min + len) >> 1;
+		int ret = cut_into(log, mark, chance, try);
+
+		if (ret) {
+			len = try - 1;
+			first = ret;
+		} else {
+			min = try + 1;
+		}
 	}
 
-	printf("%d %d\n", longest, log[the_first]);
+	printf("%d %d\n", len + 1, log[first]);
 
 	return 0;
 }

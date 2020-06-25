@@ -30,3 +30,4 @@
 - [좋은 단어](https://github.com/Im-D/Algorithm/tree/master/%5BBJ%5D%EC%A2%8B%EC%9D%80%20%EB%8B%A8%EC%96%B4(3986))
 - [괄호](https://github.com/Im-D/Algorithm/tree/master/%5BBJ%5D%EA%B4%84%ED%98%B8(9012))
 - [통나무 자르기](https://github.com/im-d-team/Algorithm/tree/master/%5BBJ%5D%ED%86%B5%EB%82%98%EB%AC%B4%20%EC%9E%90%EB%A5%B4%EA%B8%B0(1114))
+- [숫자 카드2](https://github.com/im-d-team/Algorithm/tree/master/%5BBJ%5D%EC%88%AB%EC%9E%90%20%EC%B9%B4%EB%93%9C2(10816))
